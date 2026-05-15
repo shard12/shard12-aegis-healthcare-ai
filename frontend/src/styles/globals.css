@@ -1,0 +1,205 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+  --bg: #000000;
+  --card: #0b0b0f;
+  --border: rgba(255, 255, 255, 0.06);
+  --red: #ff3b30;
+  --blue: #0a84ff;
+  --muted: rgba(255, 255, 255, 0.6);
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+}
+
+.glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+  border: 1px solid var(--border);
+  backdrop-filter: blur(18px);
+}
+
+.reduce-motion * {
+  animation: none !important;
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+.high-contrast {
+  --border: rgba(255, 255, 255, 0.35);
+}
+
+.large-text {
+  font-size: 112%;
+}
+
+.care-mode .glass {
+  border-color: rgba(10, 132, 255, 0.35);
+}
+
+.leaflet-container {
+  background: #050508;
+  font-family: inherit;
+}
+
+/* Free OSM tiles + dark “night” look — no third-party map API keys */
+.aegis-osm-dark .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.88) contrast(1.08) saturate(0.75);
+}
+
+.leaflet-control-attribution {
+  font-size: 10px;
+  opacity: 0.45;
+}
+
+/* Light shell when “Dark mode” is turned off in Settings */
+html[data-aegis-theme='light'] body,
+html[data-aegis-theme='light'] #root {
+  background-color: #e8e8ef !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell {
+  background-color: #e8e8ef;
+  color: #0c0c0e;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell.bg-grid-fade {
+  background-color: #e8e8ef !important;
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, #e8e8ef 72%),
+    radial-gradient(circle at 18% 18%, rgba(10, 132, 255, 0.12), transparent 42%),
+    radial-gradient(circle at 82% 4%, rgba(255, 59, 48, 0.08), transparent 34%) !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-black\/60 {
+  background-color: rgba(255, 255, 255, 0.92) !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .border-white\/\[0\.06\],
+html[data-aegis-theme='light'] .aegis-app-shell .border-white\/\[0\.07\],
+html[data-aegis-theme='light'] .aegis-app-shell .border-white\/\[0\.08\] {
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .text-white {
+  color: #0c0c0e !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-aegis-red,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-aegis-red * {
+  color: #ffffff !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-aegis-blue,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-aegis-blue *,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-aegis-signin,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-aegis-signin * {
+  color: #ffffff !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/40,
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/45,
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/50,
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/55,
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/60,
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/70,
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/80,
+html[data-aegis-theme='light'] .aegis-app-shell .text-white\/85 {
+  color: rgba(12, 12, 14, 0.58) !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-black\/30,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-black\/40,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-black\/50,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-\[\#0a0a0a\],
+html[data-aegis-theme='light'] .aegis-app-shell .bg-\[\#0a0a0a\]\/90 {
+  background-color: #ffffff !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-aegis-card {
+  background-color: #ffffff !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-white\/\[0\.03\],
+html[data-aegis-theme='light'] .aegis-app-shell .bg-white\/\[0\.04\],
+html[data-aegis-theme='light'] .aegis-app-shell .bg-white\/5 {
+  background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-white\/\[0\.92\] {
+  background-color: #1e293b !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell .bg-white\/\[0\.92\] .text-black,
+html[data-aegis-theme='light'] .aegis-app-shell .bg-white\/\[0\.92\] .text-white\/55 {
+  color: #f8fafc !important;
+}
+
+html[data-aegis-theme='light'] select option {
+  background-color: #fff;
+  color: #111;
+}
+
+/* Toggle switch: visible track + thumb on light shell */
+html[data-aegis-theme='light'] .aegis-app-shell button.aegis-switch[aria-checked='false'] {
+  background-color: #cbd5e1 !important;
+  border-color: #94a3b8 !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell button.aegis-switch[aria-checked='true'] {
+  border-color: rgba(15, 23, 42, 0.22) !important;
+}
+
+html[data-aegis-theme='light'] .aegis-app-shell button.aegis-switch .aegis-switch-thumb {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 4px rgba(15, 23, 42, 0.35);
+  border: 1px solid rgba(15, 23, 42, 0.16);
+}
+
+/* AI scanner — pulse + rotating scan ring */
+@keyframes aegis-pulse-border {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(10, 132, 255, 0.35);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(10, 132, 255, 0);
+  }
+}
+
+.aegis-pulse {
+  animation: aegis-pulse-border 1.6s ease-in-out infinite;
+}
+
+@keyframes aegis-scan-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.aegis-scan-ring {
+  border-top-color: #0a84ff !important;
+  animation: aegis-scan-spin 1.1s linear infinite;
+}
+
+@keyframes aegis-emergency-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 59, 48, 0.45), 0 0 24px rgba(255, 59, 48, 0.15);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255, 59, 48, 0), 0 0 36px rgba(255, 59, 48, 0.35);
+  }
+}
+
+.aegis-emergency-pulse {
+  animation: aegis-emergency-glow 1.8s ease-in-out infinite;
+}
