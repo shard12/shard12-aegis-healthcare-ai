@@ -68,9 +68,7 @@ export async function sendMail({
   if (process.env.RESEND_API_KEY && resend) {
     try {
       const result = await resend.emails.send({
-        from:
-          process.env.EMAIL_FROM ||
-          'AEGIS AI <onboarding@resend.dev>',
+        from:'AEGIS AI <onboarding@resend.dev>',
 
         to,
         subject,
