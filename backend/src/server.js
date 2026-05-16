@@ -21,6 +21,7 @@ const corsStaticOrigins = new Set([
   config.frontendUrl,
   'http://localhost:5173',
   'http://127.0.0.1:5173',
+  'https://aegis-frontend-5kcp.onrender.com',
 ]);
 app.use(
   cors({
