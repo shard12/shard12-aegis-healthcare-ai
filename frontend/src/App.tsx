@@ -28,15 +28,21 @@ const PrivacyPage = lazy(() => import('@/pages/PrivacyPage').then((m) => ({ defa
 
 function ThemeLanguageEffects() {
   const settings = useAuthStore((s) => s.user?.settings);
+
   useEffect(() => {
     applyAegisTheme(settings);
-    if (settings?.language) setStoredLocale(settings.language);
+
+    if (settings?.language) {
+      setStoredLocale(settings.language);
+    }
   }, [settings]);
+
   return null;
 }
 
 export default function App() {
   const bootstrap = useAuthStore((s) => s.bootstrap);
+
   useEffect(() => {
     void bootstrap();
   }, [bootstrap]);
@@ -44,11 +50,17 @@ export default function App() {
   return (
     <>
       <ThemeLanguageEffects />
+
       <Suspense fallback={<PageFallback />}>
         <Routes>
+          {/* PUBLIC ROUTES */}
           <Route path="/login" element={<LoginPage />} />
           <Route path="/auth/callback" element={<AuthCallbackPage />} />
+
+          {/* PUBLIC REPORT ROUTE */}
           <Route path="/reports/view/:token" element={<ReportViewPage />} />
+
+          {/* PROTECTED APP */}
           <Route
             element={
               <ProtectedRoute>
@@ -72,7 +84,9 @@ export default function App() {
             <Route path="terms" element={<TermsPage />} />
             <Route path="privacy" element={<PrivacyPage />} />
           </Route>
-          <Route path="*" element={<Navigate to="/" replace />} />
+
+          {/* SAFE FALLBACK */}
+          <Route path="*" element={<HomePage />} />
         </Routes>
       </Suspense>
     </>
